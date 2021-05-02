@@ -1,0 +1,22 @@
+<h5>Queue</h5>
+<ul class="list-group list-unstyled">
+    <li class="list-group-item" *ngFor="let video of videos; let index = index">
+          <h6>{{video.title}}</h6>
+          <p>{{video.description}}</p>
+          <p>Duration: {{video.duration | convertMinutes}}m</p> 
+         <div class="float-right">
+          <button class="btn" (click)="isPlayed(index)">
+            <i [ngClass]="video.isPlay ? 'fa fa-play-circle' : 'fa fa-pause-circle'" ></i>
+           </button>
+           <button class="btn" (click)="isFavorite(index)">
+             <i [ngClass]="video.isFavorite ? 'fa fa-star' : 'fa fa-star-o'" ></i>
+           </button>
+           <button class="btn" (click)="onDeleteVideo(index)">
+             <i class="fa fa-trash-o"></i>
+           </button>
+         </div>
+        
+    </li>
+    
+  </ul>
+ 
