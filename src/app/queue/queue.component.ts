@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../videos.service';
 import { DeleteVideoService } from '../deleteVideo.service';
+import { FavoriteVideoService } from '../favorite.service';
 
 @Component({
   selector: 'app-queue',
@@ -8,22 +9,43 @@ import { DeleteVideoService } from '../deleteVideo.service';
   styleUrls: ['./queue.component.css']
 })
 export class QueueComponent implements OnInit{
+  timer: ReturnType<typeof setTimeout>;
+  video;
 
   constructor(
     private videosService: VideosService,
-    private deleteVideoService: DeleteVideoService
+    private deleteVideoService: DeleteVideoService,
+    private favoriteVideoService: FavoriteVideoService
   ) { };
         
   get videos(){
     return this.videosService.videos
   };
+  
 
-  isPlayed(index: number){
-    this.videosService.videos[index].isPlay = !this.videosService.videos[index].isPlay
-  };
+  onPlay(index: number){
+    this.video = this.videosService.videos[index];
 
-  isFavorite(index: number){
-    this.videosService.videos[index].isFavorite = !this.videosService.videos[index].isFavorite
+    this.video.isCliced = !this.video.isCliced;
+    this.timer = setTimeout(() => {
+      this.video.isPlay = true;
+      this.video.watchedDate = new Date();
+      
+    },this.video.duration * 1000);
+   
+  }
+  
+  onStop(){
+    this.video.isCliced = !this.video.isCliced;
+    clearTimeout(this.timer)
+  }
+
+  onIsFavorite(index: number){
+    this.favoriteVideoService.favoriteVideo(index);
+  }
+
+  onNotFavorite(index: number){
+    this.favoriteVideoService.favoriteVideo(index);
   }
 
   onDeleteVideo(index: number){

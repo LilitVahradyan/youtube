@@ -1,1 +1,23 @@
-<p>favorite works!</p>
+<h5>Favorite</h5>
+<ul class="list-group list-unstyled">
+    <ng-container *ngFor="let video of videos; let index = index">
+        <li class="list-group-item"  *ngIf="video.isFavorite">
+            <h6>{{video.title}}</h6>
+            <p>{{video.description}}</p>
+            <p>Duration: {{video.duration | convertMinutes}}m</p> 
+
+            <div class="float-right">
+                <button class="btn" *ngIf="video.isFavorite" (click)="onIsFavorite(index)">
+                    <i class="fa fa-star" ></i>
+                </button>
+                <button class="btn" *ngIf="!video.isFavorite" (click)="onNotFavorite(index)">
+                    <i class="fa fa-star-o" ></i>
+                </button>
+                <button class="btn" (click)="onDeleteVideo(index)">
+                    <i class="fa fa-trash-o"></i>
+                </button>
+            </div>  
+        </li>
+    </ng-container>
+</ul>
+ 

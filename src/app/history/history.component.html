@@ -1,1 +1,27 @@
-<p>history works!</p>
+<h5>History</h5>
+<ul class="list-group list-unstyled" >
+  <ng-container *ngFor="let video of videos; let index = index" >
+    <li class="list-group-item" *ngIf="video.isPlay">
+        <h6>{{video.title}}</h6>
+        <p>{{video.description}}</p>
+        <p>Duration: {{video.duration | convertMinutes}}m</p> 
+        <p>Watched date: {{video.watchedDate | date:"hh:mm:ss"}}</p>
+        
+        <div class="float-right">
+            <button class="btn" *ngIf="video.isPlay" (click)="onGoBack(index)">
+              <i class="fa fa-arrow-circle-left" ></i>
+            </button> 
+            <button class="btn" *ngIf="video.isFavorite" (click)="onIsFavorite(index)">
+              <i class="fa fa-star" ></i>
+            </button>
+            <button class="btn" *ngIf="!video.isFavorite" (click)="onNotFavorite(index)">
+            <i class="fa fa-star-o" ></i>
+            </button>
+            <button class="btn" (click)="onDeleteVideo(index)">
+              <i class="fa fa-trash-o"></i>
+            </button>
+         </div>
+    </li>
+  </ng-container>
+</ul>
+ 

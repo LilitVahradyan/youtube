@@ -12,27 +12,30 @@ export class VideosService {
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nulla.',
             isWatched: false,
             isFavorite: false,
-            duration: 350,
-            isPlay: true,
-            watchedDate: new Date()
+            duration: 3,
+            isPlay: false,
+            watchedDate: new Date(),
+            isCliced: false
         },
         {
             title: 'Ռուբեն Հախվերդյան - Ձյունը իր երգն է երգում',
             description: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nulla.',
             isWatched: false,
             isFavorite: false,
-            duration: 400,
-            isPlay: true,
-            watchedDate: new Date()
+            duration: 5,
+            isPlay: false,
+            watchedDate: new Date(),
+            isCliced: false
         },
         {
             title: 'Mer siro ashun@ Rouben Haxverdyan,Lilit Pipoyan',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nulla.',
             isWatched: false,
             isFavorite: false,
-            duration: 260,
+            duration: 12,
             isPlay: false,
-            watchedDate: new Date()
+            watchedDate: new Date(),
+            isCliced: false
         },
 
     ];
